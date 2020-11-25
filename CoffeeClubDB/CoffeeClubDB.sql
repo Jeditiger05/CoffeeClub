@@ -1,0 +1,45 @@
+USE MASTER
+
+DROP DATABASE IF EXISTS CoffeeClubDB
+GO
+
+CREATE DATABASE CoffeeClubDB
+GO
+ 
+USE CoffeeClubDB
+GO
+
+DROP TABLE IF EXISTS Booking;
+GO
+
+DROP TABLE IF EXISTS Member;
+GO
+
+CREATE TABLE Member
+(
+    MemberId INTEGER IDENTITY(1, 1),
+    [Name] NVARCHAR(50) NOT NULL,
+    Email NVARCHAR(100),
+    [Password] NVARCHAR(50) NOT NULL,
+    Pending BIT NOT NULL,
+    CONSTRAINT PK_Member PRIMARY KEY(MemberId)
+);
+GO
+
+
+CREATE TABLE Booking
+(
+    BookingNumber INTEGER IDENTITY(1, 1),
+    BookingDate DATETIME NOT NULL,
+    [Name] NVARCHAR(50) NOT NULL,
+    Shoutee NVARCHAR(50),
+    AmountShouted FLOAT,
+    Venue NVARCHAR(50) NOT NULL,
+    MemberId INTEGER NOT NULL,
+    CONSTRAINT PK_Booking PRIMARY KEY (BookingNumber),
+    CONSTRAINT FK_Memeber_Booking FOREIGN KEY (MemberId) REFERENCES Member (MemberId)
+)
+GO
+
+SELECT * FROM Member
+SELECT * FROM Booking

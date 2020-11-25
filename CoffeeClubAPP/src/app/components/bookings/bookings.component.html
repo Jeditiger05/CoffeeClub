@@ -1,0 +1,13 @@
+<h1>Future Bookings</h1>
+
+<div *ngFor="let booking of bookings" class="bookings-list">
+    <div><strong>Booking No: </strong>{{booking.bookingNumber}}</div>
+    <div><strong>Name: </strong>{{booking.name}}</div>
+    <div><strong>Date: </strong>{{booking.bookingDate | date: "d-MMM-yyyy, h:mm a"}}</div>
+    <div><strong>Venue: </strong>{{booking.venue}}</div>
+</div>
+<h2>Delete Booking</h2>
+<div class="delete-booking">
+    <input type="number" id="bookingNumber" placeholder="Enter Booking Number" name="bookingNumber" [(ngModel)]="bookingNumber">
+    <button class="btn" (click)="deleteBooking()">Delete Booking</button>
+</div>

@@ -1,0 +1,28 @@
+<h1>Past Bookings</h1>
+
+<div *ngFor="let booking of bookings" class="bookings-list">
+    <div><strong>Booking No: </strong>{{booking.bookingNumber}}</div>
+    <div><strong>Name: </strong>{{booking.name}}</div>
+    <div><strong>Date: </strong>{{booking.bookingDate | date: "d-MMM-yyyy, h:mm a"}}</div>
+    <div><strong>Venue: </strong>{{booking.venue}}</div>
+    <div *ngIf="booking.shoutee"><strong>Shoutee: </strong>{{booking.shoutee}}</div>
+    <div *ngIf="booking.amountShouted"><strong>Cost: </strong>{{booking.amountShouted}}</div>
+</div>
+<h2>Update Booking</h2>
+<div class="container">
+    <form class="inputs" #bookingForm="ngForm" (ngSubmit)="updateBooking(bookingForm.form);">
+
+        <input type="number" id="bookingNumber" placeholder="Booking Number" name="bookingNumber" ngModel #bookingNumberField="ngModel" required>
+        
+        <select placeholder="Booking Number" class="form-control" name="shoutee" ngModel #shouteeField="ngModel" required>
+            <option *ngFor="let member of members" [value]="member">
+                {{ member }}
+            </option>
+        </select>
+
+        <input type="number" id="amountShouted" placeholder="Total Cost" name="amountShouted" ngModel #amountShoutedField="ngModel" required>
+
+        <button type="submit" class="submit-button" [disabled]="!bookingForm.valid"
+            [ngClass]="{'disabled-btn': !bookingForm.valid}">Update Booking</button>
+    </form>
+</div>

@@ -1,0 +1,12 @@
+<h1>Book Coffee</h1>
+<div class="container">
+    <form class="inputs" #bookingForm="ngForm" (ngSubmit)="bookCoffee(bookingForm.form);">
+
+        <input type="datetime-local" id="date" placeholder="Date & Time" name="bookingdate" ngModel #dateField="ngModel" required>
+        
+        <input type="text" id="venue" placeholder="Venue" name="venue" ngModel #venueField="ngModel" required>
+
+        <button type="submit" class="submit-button" [disabled]="!bookingForm.valid"
+            [ngClass]="{'disabled-btn': !bookingForm.valid}">Book Coffee</button>
+    </form>
+</div>
