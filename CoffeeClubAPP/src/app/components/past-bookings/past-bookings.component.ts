@@ -47,7 +47,9 @@ export class PastBookingsComponent implements OnInit {
       venue: this.booking.venue,
       memberId: this.dataService.member.value.memberId
     }
+
     console.log(updatedBooking);
+    
     this.dataService.updateBooking(updatedBooking).then(() => {
       console.log("Booking Updated");
       alert("Booking Updated Successfully");

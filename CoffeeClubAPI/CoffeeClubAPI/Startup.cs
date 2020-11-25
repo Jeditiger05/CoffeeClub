@@ -18,7 +18,8 @@ namespace CoffeeClubAPI
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CoffeeClubDBContext>(opt => opt.UseSqlServer("Server=.\\SQLExpress;Database=CoffeeClubDB;Trusted_Connection=True;"));
+            //services.AddDbContext<CoffeeClubDBContext>(opt => opt.UseSqlServer("Server=.\\SQLExpress;Database=CoffeeClubDB;Trusted_Connection=True;"));
+            services.AddDbContext<CoffeeClubDBContext>(opt => opt.UseSqlServer("Server=database-1.cglpw9iiyqjp.us-east-1.rds.amazonaws.com,1433;Database=CoffeeClubDB;User=admin;Password=Heyletmein05;"));
             services.AddControllers();
             services.AddCors(options =>
             {
